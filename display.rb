@@ -10,7 +10,7 @@ class Display
   
   def render
     (0..7).each do |i|
-      puts "\n --------------------------------- \n"
+      puts "\n ------------------------------- \n"
       (0..7).each do |j| 
         position = [i, j]
         if @cursor.cursor_pos == position

@@ -6,7 +6,6 @@ class Board
   def initialize()
     @grid = Array.new(8){Array.new(8, NullPiece.instance)}
     
-    
   end
   
   def [](pos)
@@ -29,15 +28,6 @@ class Board
   # def empty?
     
   def populate
-    # self[[0,0]] = Rook.new(:white, self, [0, 0])
-    # @board[0, 7] = Rook.new(:white, self, [0, 7])
-    # @board[7, 0] = Rook.new(:black, self, [7, 0])
-    # @board[7, 7] = Rook.new(:black, self, [7, 7])
-    # 
-    # @board[[0][0]] = Knight.new(:white, self, [0, 1])
-    # @board[0, 7] = Knight.new(:white, self, [0, 6])
-    # @board[7, 0] = Knight.new(:black, self, [7, 1])
-    # @board[7, 7] = Knight.new(:black, self, [7, 6])
     royal_row(:white, 0)
     royal_row(:black, 7)
     pawn_row(:white, 1)
@@ -69,7 +59,7 @@ class Board
   end 
   
   def inspect
-    "Wee"
+    "Wheeeee"
   end
     
 end
