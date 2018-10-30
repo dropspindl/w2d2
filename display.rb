@@ -1,5 +1,6 @@
 require 'colorize'
 require_relative 'cursor'
+require_relative 'board'
 
 class Display
   def initialize(board)
@@ -9,13 +10,13 @@ class Display
   
   def render
     (0..7).each do |i|
-      puts "\n --------------------------- \n"
+      puts "\n --------------------------------- \n"
       (0..7).each do |j| 
         position = [i, j]
         if @cursor.cursor_pos == position
-          print " #{@board[position]} |".colorize(:red)
+          print " #{@board[position].symbol} |".colorize(:red)
         else
-          print " #{@board[position]} |"
+          print " #{@board[position].symbol} |"
         end
       end
     
@@ -25,9 +26,9 @@ class Display
   
   def test_cursor
     loop do
-      puts "\nHere's a new board! \n"
+      puts "\n \nHere's a new board! \n"
       render
-      c = @cursor.get_input
+      @cursor.get_input
     end
   end
   
