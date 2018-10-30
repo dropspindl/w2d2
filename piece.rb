@@ -12,9 +12,9 @@ class Piece
     @pos = pos
   end
   
-  def moves 
-    @moves = []
-  end
+  # def moves 
+  #   @moves = []
+  # end
   
   def growth(start_pos, dir)
     start_row, start_col = start_pos
@@ -26,34 +26,27 @@ end
 
 module SlidingPiece
   
-  def moves(start_pos, move_dirs)
-    @moves = []
-    dir_array.each do |dir|
-      @moves.concat(grow(start_pos, dir))
-    end
-    @moves
+  def moves
+    possible_moves = []
+    move_dirs.each do |dir|
+      possible_moves.concat(grow(pos, dir))
+    end 
+    
+    possible_moves
   end
-  
-  # def diagonal_moves(start_pos)
-  #   @moves = []
-  #   DIAGONAL_DIRS.each do |dir|
-  #     @moves.concat(grow(start_pos, dir))
-  #   end
-  #   @moves
-  # end
-  
   
   
   def grow(start_pos, dir)
     check_pos = growth(start_pos, dir)
     growth_moves = []
-    until @board[check_pos] != NullPiece #|| check_pos[0] > 7 || check_pos[1] > 7
+    while @board[check_pos].is_a?(NullPiece) #|| check_pos[0] > 7 || check_pos[1] > 7
       growth_moves << check_pos
       check_pos = growth(check_pos, dir)
     end
     # if @board[check_pos].color != player.color
     #   growth_moves << check_pos
     # end
+    growth_moves
   end
   
   
@@ -67,21 +60,14 @@ end
 module SteppingPiece
   KNIGHT_DIRS = [[2,1], [2,-1], [1,2], [1,-2], [-2,1], [-2,-1], [-1,2], [-1,-2]]
   
-  def moves(start_pos, move_dirs)
-    @moves = []
-    dir_array.each do |dir|
-      @moves.concat(grow(start_pos, dir))
-    end 
-    @moves
+  def moves
+    possible_moves = []
+    # dir_array.each do |dir|
+    #   possible_moves.concat(grow(pos, move_dirs))
+    # end 
+    possible_moves
   end
   
-  # def diagonal_moves(start_pos)
-  #   @moves = []
-  #   DIAGONAL_DIRS.each do |dir|
-  #     @moves.concat(grow(start_pos, dir))
-  #   end
-  #   @moves
-  # end
   
   def grow(start_pos, dir)
     check_pos = growth(start_pos, dir)

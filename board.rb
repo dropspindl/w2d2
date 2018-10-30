@@ -5,7 +5,6 @@ class Board
   
   def initialize()
     @grid = Array.new(8){Array.new(8, NullPiece.instance)}
-    
   end
   
   def [](pos)
@@ -19,10 +18,10 @@ class Board
   end 
   
   def move_piece(start_pos, end_pos)
-    self[start_pos], self[end_pos] = self[end_pos], self[start_pos]
     raise StandardError if self[start_pos].is_a?(NullPiece)
-    raise StandardError if self[end_pos].is_a?(Piece) 
-    
+    raise StandardError if !self[end_pos].is_a?(NullPiece) 
+    self[start_pos], self[end_pos] = self[end_pos], self[start_pos]
+    self[end_pos].pos = end_pos
   end
   
   # def empty?
