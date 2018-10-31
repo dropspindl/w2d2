@@ -1,4 +1,5 @@
 require_relative 'piece'
+require_relative 'subpiece'
 
 class Board
   attr_accessor :grid, :type
